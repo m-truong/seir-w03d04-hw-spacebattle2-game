@@ -23,7 +23,7 @@ class Ship {
 }
 
 //initialize USS ship
-const uss = new Ship('USS Bikini Bottom', 20, 5, 0.7);
+const uss = new Ship('USS Margaret', 20, 5, 0.7);
 
 //create a function to generate a random interger
 const randomInt = (min, max) => {
