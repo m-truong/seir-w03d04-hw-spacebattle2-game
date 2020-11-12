@@ -13,18 +13,16 @@ Topics: OOP console game<br>
 
 ![star wars](https://vignette4.wikia.nocookie.net/starwars/images/6/65/Battle_of_Endor.png/revision/latest?cb=20121216165239)
 
-<br>
-<hr>
-
 ## :rocket: Take the space battle console game you created and turn it into a browser based game
 Get creative and come up with different ways your game could be played in the browser! There are no requirements. 
 
 ### Some ideas for getting started
 - Create a modal that describes the game to the user
 - Create a button that allows the user to choose whether to attack or retreat
+- Display the USS Margaret's hull stats and update them accordingly
 - Show the alien ships and USS Margaret on the browser using an img
 - Remove the alien ship as it is destroyed
-- Display the USS Margaret's health as the ship is destroyed
+- Animate the ships as they are destroyed
 
 ... and so much more!
 
