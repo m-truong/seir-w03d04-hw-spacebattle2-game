@@ -6,7 +6,7 @@
 
 1) **Fork and clone** this repository into your `W03D04` directory
 
-2) **Do:** [SPACE BATTLE PART 2](space-battle-cont.md)
+2) **Do:** [Space Battle Part 2](space-battle-cont.md)
 
 3) **Submit:** via GitHub issues. Follow the instructions found in the [wiki](https://git.generalassemb.ly/SEIR-Margaret/class-recordings-and-info/blob/master/submitting-homework.md).
 
