@@ -16,7 +16,7 @@ Topics: OOP console game<br>
 <br>
 <hr>
 
-## Take the space battle console game you created and turn it into a browser based game
+## :rocket: Take the space battle console game you created and turn it into a browser based game
 Get creative and come up with different ways your game could be played in the browser! There are no requirements. 
 
 ### Some ideas for getting started
