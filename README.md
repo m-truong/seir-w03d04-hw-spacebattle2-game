@@ -6,8 +6,7 @@
 
 1) **Fork and clone** this repository into your `W03D04` directory
 
-2) **Do:** [Open Weather Map Ajax]()
+2) **Do:** [SPACE BATTLE PART 2](space-battle-cont.md)
 
 3) **Submit:** via GitHub issues. Follow the instructions found in the [wiki](https://git.generalassemb.ly/SEIR-Margaret/class-recordings-and-info/blob/master/submitting-homework.md).
 
-4) **Prepare for the next day:** [review your knowlege of basic HTML and CSS](preparation.md)
