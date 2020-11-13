@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Battle Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Welcome to Space Battle Game</h1>
+    <button class="begin-game">Begin Game</button>
+
+    <!-- Instructions Modal -->
+    <div class="flex-container">
+        <div class="modal instructions-modal">
+            <h2>Welcome to the Space Battle Game!</h2>
+            <p>You have now begun playing Space Battle! The instructions are simple. Keep playing until you've destroyed
+                all the enemy alien ships! You must save Earth from Thanos' invading alien army!</p>
+            <button class="get-started">Start Game</button>
+        </div>
+    </div>
+
+
+    <!-- Gameplay Modal -->
+    <div class="flex-container">
+        <div class="modal gameplay-modal">
+            <h2>Choose to Attack or Retreat</h2>
+            <p></p>
+            <button class="attack">Attack</button>
+            <button class="retreat">Retreat</button>
+        </div>
+    </div>
+
+    <!-- requires defer tag -->
+    <script defer src="spacebattle.js"></script>
+</body>
+
+</html>
