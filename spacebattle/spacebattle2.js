@@ -9,6 +9,7 @@ const attackButton = document.querySelector(".attack");
 const retreatButton = document.querySelector(".retreat");
 const hullDisplay = document.querySelector(".hull-display");
 // const spaceshipIcons = document.querySelectorAll("i");
+const firepowerDisplay = document.querySelector(".firepower-display");
 
 /**
  * Spaceship Class
@@ -188,10 +189,11 @@ const toggleGame = () => {
 }
 const startGame = () => {
     game1.startGame();
+    hullDisplay.innerHTML = `Current Hull: ${game1.nova.hull}`;
+    // firepowerDisplay.innerHTML = `Current Firepower: ${game1.nova.firepower}`; 
 }
 const attack = () => {
     game1.continueBattle();
-    hullDisplay.innerHTML = game1.nova.hull;
     
 }
 const retreat = () => {
