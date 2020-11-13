@@ -46,7 +46,7 @@ class Mothership {
         for (let k = 0; k < num; k++) {
             const randomHull = this.hullvalues[Math.floor(Math.random() * this.hullvalues.length)];
             const randomFirepower = this.firepowervalues[Math.floor(Math.random() * this.firepowervalues.length)];
-            const randomAccuracy = this.accuracyvalues[Math.floor(Math.random() * this.accuracyvalues.length)]; 
+            const randomAccuracy = this.accuracyvalues[Math.floor(Math.random() * this.accuracyvalues.length)];
             const newSpaceship = new Spaceship(randomHull, randomFirepower, randomAccuracy);
             this.spaceships.push(newSpaceship);
         }
@@ -72,7 +72,7 @@ class GameState {
      */
     startGame() {
         this.displayWelcomeMsg();
-        this.continueBattle();
+        // this.continueBattle();
     }
     /**
      * The displayWelcomeMsg() function displays the instructions for playing the game in an alert. 
@@ -80,7 +80,7 @@ class GameState {
     displayWelcomeMsg() {
         // Game start message
         console.log('%c Space Battle', 'color: white; font-size: 40px; border;');
-        alert(`You have now begun playing Space Battle! The instructions are simple. Keep playing until you've destroyed all the enemy alien ships! You must save Earth from Thanos' invading alien army!`);
+        // alert(`You have now begun playing Space Battle! The instructions are simple. Keep playing until you've destroyed all the enemy alien ships! You must save Earth from Thanos' invading alien army!`);
         // Generates 6 alien ships
         this.alienships.generateShip(6);
         alert(`There are ${this.alienships.spaceships.length - (this.iterable)} alien ships remaining!`);
@@ -89,32 +89,30 @@ class GameState {
      * The contiueBattle() method uses a while-loop to continuously prompt the user to keep attacking or retreat from the current battle with the alien ship.
      */
     continueBattle() {
-        while (this.userAction !== "s" && this.state === true && this.alienships.spaceships[this.iterable].hull > 0 && this.nova.hull > 0) {
-            this.userAction = prompt("Attack the current alien ship?", "Type 'y' to attack or 'n' to retreat"); /** Remove */
-            // If player's input is 'y', the USS Nova attacks the alien ship.
-            if (this.userAction === "y") {
-                this.nova.shootLasers(this.alienships.spaceships[this.iterable]);
-                // If the alien ship survives, it attacks back.
-                if (this.alienships.spaceships[this.iterable].hull > 0) {
-                    alert(`The alien ship is attacking back!`);
-                    this.alienships.spaceships[this.iterable].shootLasers(this.nova);
-                    alert(`The USS Nova ship has ${this.nova.hull} hitpoints.`)
-                    // Else, if the alien ship has been destroyed, the user gets an alert that says the ship has been destroyed.
-                } else if (this.alienships.spaceships[this.iterable].hull <= 0) {
-                    console.log(`%c The alien ship has been destroyed! Great Work!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
-                    alert(`The alien ship has been destroyed! Great Work!`);
-                }
-                // If the player's input is 'n', the game ends.
-            } else if (this.userAction === "n") {
-                console.log(`%c Thank you for playing! You've ended the game!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
-                alert(`Thank you for playing! You've ended the game!`);
-                this.state = false;
-            }
-            this.checkNovaDestroyed();
-            this.checkAlienShipDefeated();
-            this.checkGameVictory();
+        this.nova.shootLasers(this.alienships.spaceships[this.iterable]);
+        // If the alien ship survives, it attacks back.
+        if (this.alienships.spaceships[this.iterable].hull > 0) {
+            alert(`The alien ship is attacking back!`);
+            this.alienships.spaceships[this.iterable].shootLasers(this.nova);
+            alert(`The USS Nova ship has ${this.nova.hull} hitpoints.`)
+            // Else, if the alien ship has been destroyed, the user gets an alert that says the ship has been destroyed.
+
+        } else if (this.alienships.spaceships[this.iterable].hull <= 0) {
+            console.log(`%c The alien ship has been destroyed! Great Work!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
+            alert(`The alien ship has been destroyed! Great Work!`);
         }
+        this.checkNovaDestroyed();
+        this.checkAlienShipDefeated();
+        this.checkGameVictory();
     }
+
+    retreatFromBattle() {
+        console.log(`%c Thank you for playing! You've ended the game!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
+        alert(`Thank you for playing! You've ended the game!`);
+        this.state = false;
+        location.reload();
+    }
+
     /**
      * The checkNovaDestroyed() is a function that checks if the player's ship has been destroyed. 
      * If so, it prompts the user to restart the game or to quit. 
@@ -164,7 +162,6 @@ class GameState {
         }
     }
 }
-
 /* ======================
 CACHED DOM NOTES
 =========================*/
@@ -172,39 +169,44 @@ const beginButton = document.querySelector(".begin-game");
 const instructionsModal = document.querySelector(".instructions-modal");
 const gameplayModal = document.querySelector(".gameplay-modal");
 const getStarted = document.querySelector(".get-started");
-const attack = document.querySelector(".attack");
-const retreat = document.querySelector(".retreat");
+const attackButton = document.querySelector(".attack");
+const retreatButton = document.querySelector(".retreat");
 
 /* ======================
 GLOBAL VARS
 =========================*/
 let slideIndex = 0;
-const backgroundImage = [
-]
+const backgroundImage = []
 
+// ====== GAME STATE CREATED HERE ====== //
+const game1 = new GameState();
 
 /* =============================
 FUNCTIONS
 ============================= */
 const toggleInstructions = () => {
     instructionsModal.classList.toggle("open");
-} 
+}
 const toggleGame = () => {
     gameplayModal.classList.toggle("open");
     instructionsModal.remove();
-} 
+}
+const startGame = () => {
+    game1.startGame();
+}
+
+const attack = () => {
+    game1.continueBattle();
+}
+const retreat = () => {
+    game1.retreatFromBattle();
+}
 
 /* =============================
 EVENT LISTENERS
 ============================= */
 beginButton.addEventListener("click", toggleInstructions);
 getStarted.addEventListener("click", toggleGame);
-attack.addEventListener("click");
-retreat.addEventListener("click");
-
-
-// ====== START GAME HERE ====== //
-const game1 = new GameState();
-console.time();
-game1.startGame();
-console.timeEnd();
+getStarted.addEventListener("click", startGame);
+attackButton.addEventListener("click", attack);
+retreatButton.addEventListener("click", retreat);
