@@ -9,7 +9,7 @@ const attackButton = document.querySelector(".attack");
 const retreatButton = document.querySelector(".retreat");
 const hullDisplay = document.querySelector(".hull-display");
 // const spaceshipIcons = document.querySelectorAll("i");
-const firepowerDisplay = document.querySelector(".firepower-display");
+// const firepowerDisplay = document.querySelector(".firepower-display");
 
 /**
  * Spaceship Class
@@ -97,7 +97,7 @@ class GameState {
         alert(`There are ${this.alienships.spaceships.length - (this.iterable)} alien ships remaining!`);
     }
     /**
-     * The contiueBattle() method uses a while-loop to continuously prompt the user to keep attacking or retreat from the current battle with the alien ship.
+     * The contiueBattle() method is executed whenever the 'Attack' button is clicked. 
      */
     continueBattle() {
         this.nova.shootLasers(this.alienships.spaceships[this.iterable]);
@@ -116,6 +116,9 @@ class GameState {
         this.checkGameVictory();
     }
 
+    /**
+     * The retreatFromBattle() method is executed whenever the 'Retreat' button is clicked.
+     */
     retreatFromBattle() {
         console.log(`%c Thank you for playing! You've ended the game!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
         alert(`Thank you for playing! You've ended the game!`);
@@ -176,9 +179,10 @@ class GameState {
 
 // ====== GAME STATE CREATED HERE ====== //
 const game1 = new GameState();
+const audioFile = new Audio("https://vgmsite.com/soundtracks/u.n.-squadron-original-sound-version/ydbfzxqb/01%20-%20front%20line%20base.mp3");
 
 /* =============================
-FUNCTIONS
+HELPER FUNCTIONS FOR EVENT LISTENERS 
 ============================= */
 const toggleInstructions = () => {
     instructionsModal.classList.toggle("open");
@@ -189,6 +193,7 @@ const toggleGame = () => {
 }
 const startGame = () => {
     game1.startGame();
+    audioFile.play();
     hullDisplay.innerHTML = `Current Hull: ${game1.nova.hull}`;
     // firepowerDisplay.innerHTML = `Current Firepower: ${game1.nova.firepower}`; 
 }
