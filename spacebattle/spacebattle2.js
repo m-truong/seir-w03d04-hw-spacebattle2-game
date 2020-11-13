@@ -1,3 +1,15 @@
+/* ======================
+CACHED DOM NOTES
+=========================*/
+const beginButton = document.querySelector(".begin-game");
+const instructionsModal = document.querySelector(".instructions-modal");
+const gameplayModal = document.querySelector(".gameplay-modal");
+const getStarted = document.querySelector(".get-started");
+const attackButton = document.querySelector(".attack");
+const retreatButton = document.querySelector(".retreat");
+const hullDisplay = document.querySelector(".hull-display");
+// const spaceshipIcons = document.querySelectorAll("i");
+
 /**
  * Spaceship Class
  */
@@ -72,7 +84,6 @@ class GameState {
      */
     startGame() {
         this.displayWelcomeMsg();
-        // this.continueBattle();
     }
     /**
      * The displayWelcomeMsg() function displays the instructions for playing the game in an alert. 
@@ -80,7 +91,6 @@ class GameState {
     displayWelcomeMsg() {
         // Game start message
         console.log('%c Space Battle', 'color: white; font-size: 40px; border;');
-        // alert(`You have now begun playing Space Battle! The instructions are simple. Keep playing until you've destroyed all the enemy alien ships! You must save Earth from Thanos' invading alien army!`);
         // Generates 6 alien ships
         this.alienships.generateShip(6);
         alert(`There are ${this.alienships.spaceships.length - (this.iterable)} alien ships remaining!`);
@@ -96,7 +106,6 @@ class GameState {
             this.alienships.spaceships[this.iterable].shootLasers(this.nova);
             alert(`The USS Nova ship has ${this.nova.hull} hitpoints.`)
             // Else, if the alien ship has been destroyed, the user gets an alert that says the ship has been destroyed.
-
         } else if (this.alienships.spaceships[this.iterable].hull <= 0) {
             console.log(`%c The alien ship has been destroyed! Great Work!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
             alert(`The alien ship has been destroyed! Great Work!`);
@@ -141,6 +150,7 @@ class GameState {
             if (this.userAction === "y") {
                 this.iterable++;
                 alert(`There are ${5 - this.iterable} alien ships remaining!`);
+                // spaceshipIcons.remove(); 
             } else if (this.userAction === "n") {
                 console.log(`%c Thank you for playing! You've ended the game!`, 'font-style: italic; color: gold; font-size: 10px; border: 1px solid grey;');
                 alert("Thank you for playing! You've ended the game!");
@@ -162,21 +172,6 @@ class GameState {
         }
     }
 }
-/* ======================
-CACHED DOM NOTES
-=========================*/
-const beginButton = document.querySelector(".begin-game");
-const instructionsModal = document.querySelector(".instructions-modal");
-const gameplayModal = document.querySelector(".gameplay-modal");
-const getStarted = document.querySelector(".get-started");
-const attackButton = document.querySelector(".attack");
-const retreatButton = document.querySelector(".retreat");
-
-/* ======================
-GLOBAL VARS
-=========================*/
-let slideIndex = 0;
-const backgroundImage = []
 
 // ====== GAME STATE CREATED HERE ====== //
 const game1 = new GameState();
@@ -194,9 +189,10 @@ const toggleGame = () => {
 const startGame = () => {
     game1.startGame();
 }
-
 const attack = () => {
     game1.continueBattle();
+    hullDisplay.innerHTML = game1.nova.hull;
+    
 }
 const retreat = () => {
     game1.retreatFromBattle();
